@@ -26,9 +26,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
 
-    DUMMY_FINANTIAL_RECORDS.forEach((key, value) {
-      DBProvider.db.insertFinancialRecord(value);
-    });
+    DUMMY_FINANTIAL_RECORDS.forEach((element) {DBProvider.db.insertFinancialRecord(element);});
 
     print("total de registros financeiros");
     DBProvider.db.financialRecords().then((value) => print(value.length));

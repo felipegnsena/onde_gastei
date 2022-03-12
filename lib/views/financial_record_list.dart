@@ -2,8 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_crud/components/financial_records_tile.dart';
+import 'package:flutter_crud/data/database.dart';
 import 'package:flutter_crud/models/financial_record.dart';
-import 'package:flutter_crud/models/user.dart';
 import 'package:flutter_crud/providers/financial_record_provider.dart';
 import 'package:flutter_crud/routes/app_routes.dart';
 import 'package:provider/provider.dart';
@@ -15,6 +15,8 @@ class FinancialRecordList extends StatelessWidget {
 
     //maneira de setar para não atualizar na interface nunca
     //final UsersProvider users = Provider.of(context, listen: false);
+
+    DBProvider.db.financialRecords().then((value) => provider.setRegistros(value));
 
     return Scaffold(
       appBar: AppBar(
