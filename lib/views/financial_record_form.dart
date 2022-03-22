@@ -22,6 +22,8 @@ class _FinancialRecordFormState extends State<FinancialRecordForm> {
     _formData['id'] = record.id;
     _formData['descricao'] = record.descricao;
     _formData['value'] = record.value.toString();
+    _formData['dataFormatada'] = record.creationDateValue?.substring(0,10);
+    print(_formData['dataFormatada']);
   }
 
   @override
@@ -85,6 +87,11 @@ class _FinancialRecordFormState extends State<FinancialRecordForm> {
                   return null;
                 },
                 onSaved: (value) => _formData['value'] = value!,
+              ),
+              TextFormField(
+                initialValue: _formData['dataFormatada'],
+                decoration: InputDecoration(labelText: 'Data'),
+                enabled: false,
               ),
               // DropdownButton<String>(
               //   value: _formData['expensiveDropdown'],

@@ -3,7 +3,7 @@ import 'package:flutter_crud/models/generic/generic_entity.dart';
 class FinancialRecord{
 
   int? id;
-  int? creationDateValue;
+  String? creationDateValue;
   int? changeDateValue;
   double? value;
   String? descricao;
@@ -12,7 +12,7 @@ class FinancialRecord{
 
     this.id = id;
 
-    this.creationDateValue = DateTime.now().millisecondsSinceEpoch;
+    this.creationDateValue = DateTime.now().toString();
 
   }
 

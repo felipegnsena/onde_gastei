@@ -25,7 +25,7 @@ class DBProvider {
       onCreate: (db, version) {
         // Run the CREATE TABLE statement on the database.
         return db.execute(
-          'CREATE TABLE finantial_records(id INTEGER PRIMARY KEY,  value REAL, descricao TEXT, creationDateValue INTEGER, changeDateValue INTEGER)',
+          'CREATE TABLE finantial_records(id INTEGER PRIMARY KEY,  value REAL, descricao TEXT, creationDateValue TEXT, changeDateValue INTEGER)',
         );
       },
       // Set the version. This executes the onCreate function and provides a

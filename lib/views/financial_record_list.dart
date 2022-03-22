@@ -28,21 +28,63 @@ class FinancialRecordList extends StatelessWidget {
                     arguments: new FinancialRecord(
                         0, 0.0, ''));
               },
-              icon: Icon(Icons.add))
+              icon: Icon(Icons.add)),
+          IconButton(
+              onPressed: () {
+                print("Exportar para excel");
+              },
+              icon: Icon(Icons.import_export)),
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(AppRoutes.SETTINGS);
+              },
+              icon: Icon(Icons.settings)),
+
         ],
       ),
       body: Column(
         children: [
-          ListTile(
-            leading: Icon(Icons.account_balance_wallet, color: Colors.red,),
-            title: Text("Total:"),
-            subtitle: Text("-100.00 BRL"),
+          Row(
+            children: [
+              SizedBox(
+                width: 180,
+                child: ListTile(
+                  leading: Icon(Icons.account_balance_wallet, color: Colors.blueAccent,),
+                  title: Text("Total:"),
+                  subtitle: Text("-100.00 BRL"),
+                ),
+              ),
+              SizedBox(
+                width: 200,
+                child: DropdownButton<String>(
+                  value: 'Dia',
+                  icon: const Icon(Icons.list, color: Colors.blue,),
+                  isExpanded: true,
+                  elevation: 16,
+                  style: const TextStyle(color: Colors.blue),
+                  underline: Container(
+                    height: 2,
+                    color: Colors.blue,
+                  ),
+                  onChanged: (String? newValue) {
+                    print(newValue);
+                  },
+                  items: <String>['Dia', 'Mês', 'Ano']
+                      .map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                ),
+              ),
+            ],
           ),
           Expanded(
               child: ListView.builder(
-            scrollDirection: Axis.vertical,
-            itemCount: provider.count,
-            itemBuilder: (ctx, i) => FinancialRecordsTile(provider.byIndex(i)),
+              scrollDirection: Axis.vertical,
+              itemCount: provider.count,
+              itemBuilder: (ctx, i) => FinancialRecordsTile(provider.byIndex(i)),
           )),
         ],
       ),

@@ -6,6 +6,7 @@ import 'package:flutter_crud/providers/users_providers.dart';
 import 'package:flutter_crud/routes/app_routes.dart';
 import 'package:flutter_crud/views/financial_record_form.dart';
 import 'package:flutter_crud/views/financial_record_list.dart';
+import 'package:flutter_crud/views/settings_vw.dart';
 import 'package:provider/provider.dart';
 
 void main() {
@@ -43,7 +44,8 @@ class _MyAppState extends State<MyApp> {
         ),
         home: FinancialRecordList(),
         routes: {
-          AppRoutes.FINANCIAL_RECORD_FORM: (_) => FinancialRecordForm()
+          AppRoutes.FINANCIAL_RECORD_FORM: (_) => FinancialRecordForm(),
+          AppRoutes.SETTINGS: (_) => SettingsForm(),
         },
       ),
     );

@@ -14,7 +14,7 @@ class FinancialRecordsTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final avatar = CircleAvatar(child: Icon(Icons.money));
+    final avatar = CircleAvatar(child: Icon(Icons.money),foregroundColor: Colors.blueGrey,);
     return ListTile(
       leading: avatar,
       title: Text(financialRecord.descricao ??=''),
@@ -25,7 +25,7 @@ class FinancialRecordsTile extends StatelessWidget {
           children: [
             IconButton(onPressed: () {
               Navigator.of(context).pushNamed(AppRoutes.FINANCIAL_RECORD_FORM, arguments: financialRecord);
-            }, icon: Icon(Icons.edit), color: Colors.orange,),
+            }, icon: Icon(Icons.edit), color: Colors.blueGrey,),
             IconButton(onPressed: () {
               showDialog(context: context, builder: (ctx) => AlertDialog(
                 title: Text('Excluir Gasto'),
@@ -41,7 +41,7 @@ class FinancialRecordsTile extends StatelessWidget {
                 ],
               )).then((value) => print(value));
 
-            }, icon: Icon(Icons.delete), color: Colors.red,),
+            }, icon: Icon(Icons.delete), color: Colors.lightBlueAccent,),
           ],
         ),
       ),
