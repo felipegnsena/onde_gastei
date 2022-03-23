@@ -22,7 +22,7 @@ class _FinancialRecordFormState extends State<FinancialRecordForm> {
     _formData['id'] = record.id;
     _formData['descricao'] = record.descricao;
     _formData['value'] = record.value.toString();
-    _formData['dataFormatada'] = record.creationDateValue?.substring(0,10);
+    _formData['dataFormatada'] = record.creationDateValue?.substring(0,10).replaceAll("-", "/");
     print(_formData['dataFormatada']);
   }
 
