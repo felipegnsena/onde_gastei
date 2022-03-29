@@ -11,12 +11,16 @@ import 'package:provider/provider.dart';
 class FinancialRecordList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+    double valorTotal = 0;
+
     final FinancialRecordProvider provider = Provider.of(context);
 
-    //maneira de setar para não atualizar na interface nunca
-    //final UsersProvider users = Provider.of(context, listen: false);
-
     DBProvider.db.financialRecords().then((value) => provider.setRegistros(value));
+
+    if(provider!=null && provider.valorTotal !=null){
+      valorTotal = provider.valorTotal;
+    }
 
     return Scaffold(
       appBar: AppBar(
@@ -51,7 +55,7 @@ class FinancialRecordList extends StatelessWidget {
                 child: ListTile(
                   leading: Icon(Icons.account_balance_wallet, color: Colors.blueAccent,),
                   title: Text("Total:"),
-                  subtitle: Text("-100.00 BRL"),
+                  subtitle: Text(" $valorTotal BRL"),
                 ),
               ),
               SizedBox(

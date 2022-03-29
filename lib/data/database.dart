@@ -91,6 +91,35 @@ class DBProvider {
     }).first;
   }
 
+  Future<void> excluirRegistroFinanceiro(int id) async {
+    // Get a reference to the database.
+    final db = await database;
+
+    // Remove the Dog from the database.
+    await db.delete(
+      'finantial_records',
+      // Use a `where` clause to delete a specific dog.
+      where: 'id = ?',
+      // Pass the Dog's id as a whereArg to prevent SQL injection.
+      whereArgs: [id],
+    );
+  }
+
+  Future<void> updateRegistroFinanceiro(FinancialRecord registroFinanceiro) async {
+    // Get a reference to the database.
+    final db = await database;
+
+    // Update the given Dog.
+    await db.update(
+      'finantial_records',
+      registroFinanceiro.toMap(),
+      // Ensure that the Dog has a matching id.
+      where: 'id = ?',
+      // Pass the Dog's id as a whereArg to prevent SQL injection.
+      whereArgs: [registroFinanceiro.id],
+    );
+  }
+
 
 
 }

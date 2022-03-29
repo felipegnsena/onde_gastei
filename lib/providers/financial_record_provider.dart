@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_crud/data/database.dart';
 import 'package:flutter_crud/data/dummy_finantial_records.dart';
 import 'package:flutter_crud/models/financial_record.dart';
 
@@ -20,23 +21,22 @@ class FinancialRecordProvider with ChangeNotifier {
     return _items.length;
   }
 
+  double get valorTotal {
+
+    if(_items.isEmpty){
+      return 0;
+    }
+
+    return _items.map((e) => e.value??=0).reduce((value, element) => value + element);
+  }
+
   void put(FinancialRecord record) {
-    if (record == null) {
+    if (record == null || record.id == null) {
       return;
     }
 
-    // if (record.id != null &&
-    //     _items.containsKey(record.id)) {
-    //   _items.update(
-    //       record.id??=0, (_) => new FinancialRecord(record.id??=0, record.value, record.descricao));
-    // } else {
-    //   final id = count+1;
-    //
-    //   _items.putIfAbsent(id, () => new FinancialRecord(id, record.value, record.descricao));
-    //
-    // }
+    DBProvider.db.updateRegistroFinanceiro(record);
 
-    //atualiza interface
     notifyListeners();
   }
 
@@ -47,9 +47,7 @@ class FinancialRecordProvider with ChangeNotifier {
   void remove(FinancialRecord record){
     print(record.id);
     if(record != null && record.id != null){
-      // _items.remove(record.id);
-      // _items.forEach((key, value) {print(key);});
-      //atualiza interface
+      DBProvider.db.excluirRegistroFinanceiro(record.id??=0);
       notifyListeners();
     }
 

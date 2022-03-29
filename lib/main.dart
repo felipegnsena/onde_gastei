@@ -38,6 +38,7 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider(create: (context) => FinancialRecordProvider()),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
