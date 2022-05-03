@@ -27,10 +27,9 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
 
-    DUMMY_FINANTIAL_RECORDS.forEach((element) {DBProvider.db.insertFinancialRecord(element);});
-
-    print("total de registros financeiros");
-    DBProvider.db.financialRecords().then((value) => print(value.length));
+    // DUMMY_FINANTIAL_RECORDS.forEach((element) {DBProvider.db.insertFinancialRecord(element);});
+    //
+    // DBProvider.db.financialRecords().then((value) => print(value.length));
 
     return MultiProvider(
       providers: [
@@ -39,7 +38,7 @@ class _MyAppState extends State<MyApp> {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'Anotações financeiras',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),

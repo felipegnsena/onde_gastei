@@ -48,9 +48,8 @@ class _FinancialRecordFormState extends State<FinancialRecordForm> {
                 _form.currentState!.validate();
                 _form.currentState!.save();
                 _formData['isExpense'] = _formData['expensiveDropdown'] == 'Despesa' ? true : false;
-                print(double.tryParse(_formData['value']));
                 Provider.of<FinancialRecordProvider>(context, listen: false)
-                    .put(new FinancialRecord(
+                    .salvarOuAtualizar(new FinancialRecord(
                         _formData['id'],
                         double.tryParse(_formData['value']),
                         _formData['descricao']));

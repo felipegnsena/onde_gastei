@@ -30,7 +30,22 @@ class FinancialRecordProvider with ChangeNotifier {
     return _items.map((e) => e.value??=0).reduce((value, element) => value + element);
   }
 
+  void salvarOuAtualizar(FinancialRecord record) {
+    if (record == null) {
+      return;
+    }
+
+    if(record.id == 0){
+      DBProvider.db.insertFinancialRecord(record);
+    }else{
+      DBProvider.db.updateRegistroFinanceiro(record);
+    }
+
+    notifyListeners();
+  }
+
   void put(FinancialRecord record) {
+    print(record.toString());
     if (record == null || record.id == null) {
       return;
     }
